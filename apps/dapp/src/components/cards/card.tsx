@@ -9,7 +9,7 @@ interface CardProps {
   isLoading?: boolean;
 }
 
-const Card: React.FC<CardProps> = ({
+const Card = React.memo<CardProps>(({
   title,
   children,
   className,

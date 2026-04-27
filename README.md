@@ -25,19 +25,6 @@ npm run dev
 
 Open http://localhost:3000 in your browser. The app will hot-reload on changes.
 
-## **Keypoints:**
-
-- Understand how the blockchain and contracts work.
-- What are viem/wagmi and how to integrate them into a repo.
-- Connect a wallet to your app.
-- Detect the wrong network and allow the user to switch chains.
-- Fetch allowances and balances: show them and manipulate them.
-  - Humanize the data.
-  - Perform calculations.
-  - Inputs and buttons with check validations and UI/UX states (loadings, invalid, errors, etc).
-- Write methods on the blockchain.
-  - Transfer tokens.
-  - Increase and decrease allowance.
 
 ## Technologies you should use:
 

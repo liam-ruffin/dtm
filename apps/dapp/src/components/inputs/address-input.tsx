@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { TokenType } from '@defi-token/blockchain';
 import { Input, Wallet } from '@defi-token/ui';
 import { validAddress } from '../../utils/constants';
@@ -18,15 +18,15 @@ const AddressInput: React.FC<AddressInputProps> = ({
   setTargetAddress,
   setIsValidAddress,
 }) => {
-  const handleAddressValidation = () => {
+  const error = useMemo(() => {
     if (!targetAddress) return 'Address is required';
     if (!targetAddress.startsWith('0x')) return 'Address must start with 0x';
     if (!validAddress.test(targetAddress))
       return 'Invalid address, must be hexadecimal and 42 characters long';
     return '';
-  };
+  }, [targetAddress]);
 
-  const isValidAddress = handleAddressValidation().length === 0;
+  const isValidAddress = error.length === 0;
 
   useEffect(() => {
     setIsValidAddress(isValidAddress);
@@ -42,7 +42,7 @@ const AddressInput: React.FC<AddressInputProps> = ({
       onChange={(e) => setTargetAddress(e.target.value)}
       placeholder="0x..."
       pattern={validAddress.source}
-      error={handleAddressValidation()}
+      error={error}
       disabled={disabled}
       icon={<Wallet />}
     />

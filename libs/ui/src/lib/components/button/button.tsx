@@ -1,4 +1,4 @@
-import { useState, useRef, forwardRef, useImperativeHandle } from 'react';
+import React, { useState, useRef, forwardRef, useImperativeHandle } from 'react';
 import cn from 'classnames';
 import ButtonLoader from './button-loader';
 import { LoaderSizeTypes, LoaderVariantTypes } from './loader';
@@ -57,7 +57,7 @@ export interface ButtonProps
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
-export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+export const Button = React.memo(forwardRef<HTMLButtonElement, ButtonProps>(
   (
     {
       children,
@@ -77,27 +77,27 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     },
     ref: React.Ref<HTMLButtonElement | null>
   ) => {
-    const [hover, setHover] = useState<boolean>(false);
-    const [dripShow, setDripShow] = useState<boolean>(false);
-    const [dripX, setDripX] = useState<number>(0);
-    const [dripY, setDripY] = useState<number>(0);
+    const [hover, setHover] = useState<boolean>(false));
+    const [dripShow, setDripShow] = useState<boolean>(false));
+    const [dripX, setDripX] = useState<number>(0));
+    const [dripY, setDripY] = useState<number>(0));
     const colorClassNames = colors[color];
     const sizeClassNames = sizes[size];
-    const buttonRef = useRef<HTMLButtonElement>(null);
-    useImperativeHandle(ref, () => buttonRef.current);
+    const buttonRef = useRef<HTMLButtonElement>(null));
+    useImperativeHandle(ref, () => buttonRef.current));
     function dripCompletedHandle() {
-      setDripShow(false);
-      setDripX(0);
-      setDripY(0);
+      setDripShow(false));
+      setDripX(0));
+      setDripY(0));
     }
     const clickHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
       if (!isLoading && buttonRef.current) {
-        const rect = buttonRef.current?.getBoundingClientRect();
-        setDripShow(true);
-        setDripX(event.clientX - rect.left);
-        setDripY(event.clientY - rect.top);
+        const rect = buttonRef.current?.getBoundingClientRect());
+        setDripShow(true));
+        setDripX(event.clientX - rect.left));
+        setDripY(event.clientY - rect.top));
       }
-      onClick && onClick(event);
+      onClick && onClick(event));
     };
 
     let buttonColorClassNames = '';
@@ -181,9 +181,9 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           )}
         </button>
       </div>
-    );
+    ));
   }
-);
+));
 
 Button.displayName = 'Button';
 export default Button;

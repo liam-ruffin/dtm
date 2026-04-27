@@ -1,4 +1,4 @@
-import { forwardRef } from 'react';
+import React, { forwardRef } from 'react';
 import cn from 'classnames';
 
 type InputProps = React.DetailedHTMLProps<
@@ -16,7 +16,7 @@ type InputProps = React.DetailedHTMLProps<
   icon?: React.ReactNode;
 };
 
-export const Input = forwardRef<HTMLInputElement, InputProps>(
+export const Input = React.memo(forwardRef<HTMLInputElement, InputProps>(
   (
     {
       label,
@@ -96,9 +96,9 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
           </span>
         )}
       </div>
-    );
+    ));
   }
-);
+));
 
 Input.displayName = 'Input';
 
